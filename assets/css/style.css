@@ -1,68 +1,69 @@
-/* 
-	CSS by Dan Høegh
-	UCN MMD 2021 
-
-*/
-
 body {
 	font-family: sans-serif;
-	padding: 5vw;
-	font-size: 4vw;
+	padding: 5rem;
+	font-size: 1rem;
 	line-height: 1.4;
 }
 
-@media (min-width: 641px) {
-	body {
-		padding: .8rem;
-		font-size: 1rem;
-	}
+td, th {
+	padding: .5rem 2rem;
+}
+
+td:not(:nth-of-type(1)), th {
+	text-align: center;
+}
+
+table {
+	margin-bottom: 5rem;
+}
+
+/* NEEDED FOR HIGHLIGHTING */
+
+/* 	
+	Based on 
+	Simple CSS-Only Row and Column Highlighting
+	Chris Coyier on Jan 30, 2015 (Updated on Apr 13, 2015)
+	https://css-tricks.com/simple-css-row-column-highlighting/ 
+*/
+
+.pos-highlight tr, 
+.pos-highlight td, 
+.pos-highlight th {
+	transition: background-color .1s ease-in-out;
 }
 
 
-/* test styles */
-
-body {
-	background-color: var(--frp-color-background);	
-	padding: 0;
+table.pos-highlight {
+	overflow: hidden;
+	border-collapse: collapse;
 }
 
-/* button */
-.btn {
-	display: inline-block;
-	text-decoration: none;
-	border-radius: var(--frp-radius-component-s);
-	background-color: var(--frp-color-primary);
-	color: var(--frp-color-on-primary);
-	box-shadow: var(--frp-shadow);
-	transition: box-shadow .2s ease-out;
+.pos-highlight tr:hover {
+	background-color: rgba(0,0,0,.1);
 }
 
-.btn.mwa {
-	background-color: var(--frp-color-accent);
-	color: var(--frp-color-on-accent);
+.pos-highlight td, .pos-highlight th {
+	position: relative;
 }
 
-.btn:active {
-	box-shadow: var(--frp-shadow-depressed);
+.pos-highlight td:not(:nth-of-type(1))::after,
+.pos-highlight th:not(:nth-of-type(1))::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: -200vh;
+	height: 400vh;
+	width: 100%;
+	z-index: -1;
+	transition: background-color .1s ease-in-out;
 }
+.pos-highlight td:hover::after,
+.pos-highlight th:hover::after {
+	  background-color: rgba(0,0,0,.05);
+  }
 
-@media (min-width: 641px){
-	.flex > div {
-		width: 50%;
-	}
-}
 
-@media (max-width: 640px){
-	.flex {
-		display: block;
-	}
-
-	.flex > div {
-		width: 100%;
-		margin-bottom: var(--frp-density-m);
-	}
-}
-
-h1, p {
-	margin-bottom: var(--frp-density-m);
+.pos-highlight td:not(:nth-of-type(1)), 
+.pos-highlight th:not(:nth-of-type(1)) {
+	width: 13%;
 }
