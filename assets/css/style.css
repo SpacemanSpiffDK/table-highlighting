@@ -33,10 +33,15 @@ table {
 	https://css-tricks.com/simple-css-row-column-highlighting/ 
 */
 
+:root {
+	--table-highlighting-color: rgba(0,0,0,.1);
+	--table-highlighting-transition-time: .1s;
+}
+
 .pos-highlight tr, 
 .pos-highlight td, 
 .pos-highlight th {
-	transition: background-color .1s ease-in-out;
+	transition: background-color var(--table-highlighting-transition-time) ease-in-out;
 }
 
 
@@ -46,7 +51,7 @@ table.pos-highlight {
 }
 
 .pos-highlight tr:hover {
-	background-color: rgba(0,0,0,.1);
+	background-color: var(--table-highlighting-color);
 }
 
 .pos-highlight td, .pos-highlight th {
@@ -62,11 +67,11 @@ table.pos-highlight {
 	height: 400vh;
 	width: 100%;
 	z-index: -1;
-	transition: background-color .1s ease-in-out;
+	transition: background-color var(--table-highlighting-transition-time) ease-in-out;
 }
 .pos-highlight td:hover::after,
 .pos-highlight th:hover::after {
-	  background-color: rgba(0,0,0,.05);
+	background-color: var(--table-highlighting-color);
   }
 
 
