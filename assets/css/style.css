@@ -1,5 +1,9 @@
 /* GENERIC CSS - NOT NEEDED FOR HIGHLIGHTING */
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	font-family: sans-serif;
 	padding: 5rem;
@@ -43,25 +47,32 @@ th:not(:nth-of-type(1)) {
 */
 
 :root {
-	--table-highlighting-color: rgba(0,0,0,.1);
+	/* --table-highlighting-color: rgba(0,0,0,.1); */
 	--table-highlighting-transition-time: .1s;
+	--border-color: #000;
 }
-
-.pos-highlight tr, 
-.pos-highlight td, 
-.pos-highlight th {
-	transition: background-color var(--table-highlighting-transition-time) ease-in-out;
-}
-
 
 table.pos-highlight {
 	overflow: hidden;
 	border-collapse: collapse;	
 }
 
-.pos-highlight tr:hover {
-	background-color: var(--table-highlighting-color);
+.pos-highlight tr {
+	border-bottom: 1px solid transparent;
+	
 }
+
+.pos-highlight tr:hover:not(:nth-of-type(1)) {
+	background-image: url(../img/1x1-black.png);
+	background-position: center 1px;
+	background-repeat: repeat-x;
+	border-bottom-color: var(--border-color);
+}
+
+.pos-highlight tr:hover td, 
+.pos-highlight tr:hover th {
+}
+
 
 .pos-highlight td, .pos-highlight th {
 	position: relative;
@@ -76,11 +87,11 @@ table.pos-highlight {
 	height: 400vh;
 	width: 100%;
 	z-index: -1;
-	transition: background-color var(--table-highlighting-transition-time) ease-in-out;
 }
 .pos-highlight td:hover::after,
 .pos-highlight th:hover::after {
-	background-color: var(--table-highlighting-color);
+	border-left: 1px solid var(--border-color);
+	border-right: 1px solid var(--border-color);
   }
 
 
