@@ -7,6 +7,13 @@ body {
 	line-height: 1.4;
 }
 
+.pos-highlight input[type="radio"],
+.pos-highlight input[type="checkbox"] {
+	height: 1.7rem;
+	width: 1.7rem;
+	cursor: pointer;
+}
+
 td, th {
 	padding: .5rem 2rem;
 }
@@ -19,8 +26,10 @@ table {
 	margin-bottom: 5rem;
 }
 
-
-
+td:not(:nth-of-type(1)), 
+th:not(:nth-of-type(1)) {
+	width: 13%;
+}
 
 
 
@@ -47,7 +56,7 @@ table {
 
 table.pos-highlight {
 	overflow: hidden;
-	border-collapse: collapse;
+	border-collapse: collapse;	
 }
 
 .pos-highlight tr:hover {
@@ -75,7 +84,3 @@ table.pos-highlight {
   }
 
 
-.pos-highlight td:not(:nth-of-type(1)), 
-.pos-highlight th:not(:nth-of-type(1)) {
-	width: 13%;
-}
